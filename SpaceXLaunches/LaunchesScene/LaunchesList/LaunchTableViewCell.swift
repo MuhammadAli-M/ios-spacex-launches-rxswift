@@ -110,10 +110,11 @@ struct LaunchViewModel{
     init(_ model: Launch){
         name = model.name
         number = String(model.number)
-        date = model.date
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy HH:mm:ss Z"
+        date = formatter.string(from: model.date)
         details = model.details
         iconData =  model.iconData
         upcoming = model.upcoming
-
     }
 }

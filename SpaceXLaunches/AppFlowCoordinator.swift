@@ -18,6 +18,7 @@ final class AppFlowCoordinator{
     }
     
     func start() {
+        self.navigationController.navigationBar.prefersLargeTitles = true
         let flow = appDIContainer.makeLaunchesSceneDIContainer().makeLaunchesSceneFlowCoordinator(navigationController: navigationController)
         flow.start()
     }

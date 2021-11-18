@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RxRelay
 // TODO: assure no capture for self
 
 protocol LaunchesListViewModelInput {
@@ -19,6 +20,7 @@ protocol LaunchesListViewModelOutput {
     var launchSelected: PublishSubject<(Int)> { get }
 
     var launches: PublishSubject<[LaunchViewModel]> { get }
+    var title: BehaviorRelay<String> { get }
     var availableYears: [String] { get }
     var availableEvents: [String] { get }
 }
@@ -34,6 +36,7 @@ class DefaultLaunchesListViewModel: LaunchesListViewModel {
     
     let launches = PublishSubject<[LaunchViewModel]>()
     let allLaunches = PublishSubject<[Launch]>()
+    let title: BehaviorRelay<String> = .init(value: "SpaceX Launches")
     private var filteredLaunches = [Launch]()
 
     var yearAndEventSelected = PublishSubject<(yearIndex: Int ,eventIndex: Int )>()
@@ -72,7 +75,7 @@ class DefaultLaunchesListViewModel: LaunchesListViewModel {
                     
                     let filtered = launches
                         .filter{ launch in
-                            return launch.upcoming == upcomping && launch.date.contains(self.availableYears[yearIndex]) == true}
+                            return launch.upcoming == upcomping && launch.date.description.contains(self.availableYears[yearIndex]) == true}
                     
                     self.filteredLaunches = filtered
                     

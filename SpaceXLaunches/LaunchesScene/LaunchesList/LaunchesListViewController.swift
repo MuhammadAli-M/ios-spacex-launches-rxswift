@@ -50,6 +50,12 @@ class LaunchesListViewController: UIViewController, StoryboardInstantiable {
 
     
     func bind(to viewModel: LaunchesListViewModel) {
+        
+        viewModel.title.subscribe { titleString in
+            self.title = titleString
+        }.disposed(by: bag)
+                                
+        
         viewModel.launches.bind(to: tableView.rx.items(cellIdentifier: LaunchTableViewCell.Id,
                                                     cellType: LaunchTableViewCell.self)) { row , item , cell in
             cell.configure(viewModel: item)
