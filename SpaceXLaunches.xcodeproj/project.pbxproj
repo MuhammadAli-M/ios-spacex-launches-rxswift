@@ -25,6 +25,7 @@
 		54DBCA4727443E4C0026CC0E /* LaunchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA4627443E4B0026CC0E /* LaunchTableViewCell.swift */; };
 		54DBCA872744F2B20026CC0E /* GetLaunchesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA852744F2B20026CC0E /* GetLaunchesService.swift */; };
 		54DBCA882744F2B20026CC0E /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA862744F2B20026CC0E /* Endpoint.swift */; };
+		54F4DEF32746C22500919F7C /* GetRocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F4DEF22746C22500919F7C /* GetRocketService.swift */; };
 		54F616CB27461E8700EEDD93 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F616CA27461E8700EEDD93 /* AppFlowCoordinator.swift */; };
 		54F616CD2746232600EEDD93 /* LaunchesSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F616CC2746232600EEDD93 /* LaunchesSceneDIContainer.swift */; };
 		54F616CF2746234500EEDD93 /* LaunchesSceneFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F616CE2746234500EEDD93 /* LaunchesSceneFlowCoordinator.swift */; };
@@ -79,6 +80,7 @@
 		54DBCA4627443E4B0026CC0E /* LaunchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchTableViewCell.swift; sourceTree = "<group>"; };
 		54DBCA852744F2B20026CC0E /* GetLaunchesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLaunchesService.swift; sourceTree = "<group>"; };
 		54DBCA862744F2B20026CC0E /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		54F4DEF22746C22500919F7C /* GetRocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRocketService.swift; sourceTree = "<group>"; };
 		54F616CA27461E8700EEDD93 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		54F616CC2746232600EEDD93 /* LaunchesSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesSceneDIContainer.swift; sourceTree = "<group>"; };
 		54F616CE2746234500EEDD93 /* LaunchesSceneFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesSceneFlowCoordinator.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				54DBCA852744F2B20026CC0E /* GetLaunchesService.swift */,
+				54F4DEF22746C22500919F7C /* GetRocketService.swift */,
 				54DBCA862744F2B20026CC0E /* Endpoint.swift */,
 			);
 			path = API;
@@ -513,6 +516,7 @@
 				54DBC9F427439BA60026CC0E /* ViewController.swift in Sources */,
 				54DBCA872744F2B20026CC0E /* GetLaunchesService.swift in Sources */,
 				54F616CF2746234500EEDD93 /* LaunchesSceneFlowCoordinator.swift in Sources */,
+				54F4DEF32746C22500919F7C /* GetRocketService.swift in Sources */,
 				54F616DE2746366900EEDD93 /* RocketViewModel.swift in Sources */,
 				54DBCA3C27439D200026CC0E /* StoryboardInstantiable.swift in Sources */,
 				54DBC9F027439BA60026CC0E /* AppDelegate.swift in Sources */,
