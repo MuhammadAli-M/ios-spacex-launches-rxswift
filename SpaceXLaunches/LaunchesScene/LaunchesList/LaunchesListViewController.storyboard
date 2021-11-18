@@ -22,6 +22,7 @@
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SiU-gO-mLe">
                                 <rect key="frame" x="62.5" y="48" width="250" height="32"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <segments>
                                     <segment title="2020"/>
                                     <segment title="2021"/>
@@ -29,6 +30,7 @@
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RzQ-fk-m93">
                                 <rect key="frame" x="94" y="95" width="187.5" height="32"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <segments>
                                     <segment title="Successful"/>
                                     <segment title="Upcoming"/>
@@ -113,7 +115,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RzQ-fk-m93" firstAttribute="width" secondItem="xRA-Nz-89m" secondAttribute="width" multiplier="0.5" id="4z4-Tf-QFs"/>
                             <constraint firstItem="PXa-7e-hdt" firstAttribute="top" secondItem="Ua3-gQ-ada" secondAttribute="bottom" constant="20" id="7vQ-Ih-kYK"/>
