@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct Rocket{
+    let name: String
+    let description: String
+    let iconUrlString: String?
+    let linkString: String
+}
