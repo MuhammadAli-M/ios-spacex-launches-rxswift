@@ -8,10 +8,10 @@
 import UIKit
 
 struct LaunchesListRouter {
-    let showLauncheDetails: (_ : Launch) -> Void
+    let showLaunchDetails: (_ : Launch) -> Void
 }
 
-struct LauncheDetailsRouter {
+struct LaunchDetailsRouter {
     let showLaunchesList: () -> Void
 }
 
@@ -20,7 +20,7 @@ protocol LaunchesSceneDependencies{
     
     func makeLaunchesListVC(router : LaunchesListRouter) -> LaunchesListVC
     func makeLauncheDetailsVC(launch: Launch,
-                              router : LauncheDetailsRouter) -> LauncheDetailsVC
+                              router : LaunchDetailsRouter) -> LaunchDetailsVC
 }
 
 final class LaunchesSceneFlowCoordinator{
@@ -36,7 +36,7 @@ final class LaunchesSceneFlowCoordinator{
     
     func start() {
 
-        let router = LaunchesListRouter(showLauncheDetails: showLauncheDetails)
+        let router = LaunchesListRouter(showLaunchDetails: showLauncheDetails)
         let vc = dependencies.makeLaunchesListVC(router: router)
         navigationController?.pushViewController(vc, animated: false)
 
@@ -44,7 +44,7 @@ final class LaunchesSceneFlowCoordinator{
     
     // LaunchesList router
     func showLauncheDetails(_ launch: Launch) -> Void{
-        let router = LauncheDetailsRouter(showLaunchesList: showLaunchesList)
+        let router = LaunchDetailsRouter(showLaunchesList: showLaunchesList)
         let vc = dependencies.makeLauncheDetailsVC(launch: launch ,
                                                    router: router)
         navigationController?.pushViewController(vc, animated: true)
