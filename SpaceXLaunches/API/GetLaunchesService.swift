@@ -14,12 +14,10 @@ protocol Service {
 }
 
 protocol LaunchesService: Service {
-    var apiKey: String { get }
 }
 
 extension LaunchesService {
     var baseUrl:String { "https://api.spacexdata.com/" }
-    var apiKey: String { "2696829a81b1b5827d515ff121700838"}
 }
 
 enum GetLaunchesFailureReason: Int, Error {
@@ -27,64 +25,10 @@ enum GetLaunchesFailureReason: Int, Error {
     case notFound = 1001
 }
 
-
 class GetLaunchesService: LaunchesService{
     
     static let shared = GetLaunchesService()
-    
-//    func getLaunches() -> Observable<[Launch]> {
-//        let observer = Observable.just([Launch(name: "", number: "", date: "", details: "", iconData: nil, upcoming: false)])
-////        return Observable.create { [weak self] observer -> Disposable in
-////            guard let `self` = self else { return Disposables.create() }
-//
-//            let  endpoint = Endpoint(baseUrl: self.baseUrl,
-//                                 path: "v4/launches",
-//                                 queries: nil)
-//
-//        guard let url = endpoint.url else {
-////            observer.onError(GetLaunchesFailureReason.invalidURL)
-//            return observer//Disposables.create()
-//        }
-//
-//            return URLSession.shared.rx.data(request: URLRequest(url: url)).map{ data in
-//
-//                let launchesResponseData = try newJSONDecoder().decode([GetLaunchesResponseElement].self, from: data)
-//                let launches = launchesResponseData.map{ $0.toDomain() }
-//                return launches
-//
-//            }.observe(on: MainScheduler.asyncInstance)
-////        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-////
-////
-////            if let error = error {
-////                errorLog("requesting \(url.absoluteString) , error : \(error.localizedDescription )")
-////                observer.onError(error)
-////                return
-////            }
-////
-////            guard let data = data else{
-////                errorLog("requesting \(url.absoluteString) , error : \(error?.localizedDescription ?? " ")")
-////                observer.onError(error ?? GetLaunchesFailureReason.notFound)
-////                return
-////            }
-////
-////            do{
-////                let launchesResponseData = try newJSONDecoder().decode(GetLaunchesResponse.self, from: data)
-////                let launches = launchesResponseData.docs.map{ $0.toDomain() }
-////                observer.onNext(launches)
-////                debugLog("recieved \(launchesResponseData.docs.count) launches")
-////            }catch{
-////                observer.onError(error)
-////                errorLog("while json parsing, error : \(error.localizedDescription)")
-////            }
-////        }
-////            task.resume()
-////
-////            return Disposables.create()
-////        }
-//    }
-    
-    
+        
     func getLaunches() -> Observable<[Launch]> {
         
         return Observable.create { [weak self] (observer) -> Disposable in
@@ -158,7 +102,7 @@ struct GetLaunchesResponseElement: Codable {
     let staticFireDateUnix: Int?
     let net: Bool
     let window: Int?
-    let rocket: Rocket
+    let rocketId: RocketID
     let success: Bool?
     let failures: [Failure]
     let details: String?
@@ -179,7 +123,9 @@ struct GetLaunchesResponseElement: Codable {
         case fairings, links
         case staticFireDateUTC = "static_fire_date_utc"
         case staticFireDateUnix = "static_fire_date_unix"
-        case net, window, rocket, success, failures, details, crew, ships, capsules, payloads, launchpad
+        case net, window
+        case rocketId = "rocket"
+        case success, failures, details, crew, ships, capsules, payloads, launchpad
         case flightNumber = "flight_number"
         case name
         case dateUTC = "date_utc"
@@ -199,7 +145,8 @@ struct GetLaunchesResponseElement: Codable {
                date: dateUTC,
                details: details ?? "",
                iconData: nil,
-               upcoming: upcoming)
+               upcoming: upcoming,
+               rocketID: rocketId)
     }
 }
 
@@ -241,6 +188,7 @@ enum DatePrecision: String, Codable {
     case day = "day"
     case hour = "hour"
     case month = "month"
+    case quarter = "quarter"
 }
 
 // MARK: - Failure
@@ -305,12 +253,7 @@ struct Reddit: Codable {
     let media, recovery: String?
 }
 
-enum Rocket: String, Codable {
-    case the5E9D0D95Eda69955F709D1Eb = "5e9d0d95eda69955f709d1eb"
-    case the5E9D0D95Eda69973A809D1Ec = "5e9d0d95eda69973a809d1ec"
-    case the5E9D0D95Eda69974Db09D1Ed = "5e9d0d95eda69974db09d1ed"
-}
-
+typealias RocketID = String
 
     
 // MARK: - Helper functions for creating encoders and decoders
@@ -340,5 +283,5 @@ struct Launch{
     let details: String
     let iconData: Data?
     let upcoming: Bool
-
+    let rocketID: RocketID
 }

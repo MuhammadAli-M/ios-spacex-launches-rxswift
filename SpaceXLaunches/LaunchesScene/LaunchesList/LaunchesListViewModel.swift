@@ -16,24 +16,30 @@ protocol LaunchesListViewModelInput {
 
 protocol LaunchesListViewModelOutput {
     var yearAndEventSelected: PublishSubject<(yearIndex: Int ,eventIndex: Int )> { get }
+    var launchSelected: PublishSubject<(Int)> { get }
+
     var launches: PublishSubject<[LaunchViewModel]> { get }
     var availableYears: [String] { get }
     var availableEvents: [String] { get }
-    func showLaunchDetails(at index: Int)
 }
 
 protocol LaunchesListViewModel: LaunchesListViewModelInput, LaunchesListViewModelOutput { }
 
 class DefaultLaunchesListViewModel: LaunchesListViewModel {
-    
-    init(){
+    private var router: LaunchesListRouter
+    init(router: LaunchesListRouter){
+        self.router = router
         setupBindings()
     }
     
-    var launches = PublishSubject<[LaunchViewModel]>()
-    var allLaunches = PublishSubject<[Launch]>()
+    let launches = PublishSubject<[LaunchViewModel]>()
+    let allLaunches = PublishSubject<[Launch]>()
+    private var filteredLaunches = [Launch]()
+
     var yearAndEventSelected = PublishSubject<(yearIndex: Int ,eventIndex: Int )>()
-    let bag = DisposeBag()
+    var launchSelected = PublishSubject<(Int)>()
+
+    private let bag = DisposeBag()
     
     func setupBindings(){
         
@@ -43,7 +49,7 @@ class DefaultLaunchesListViewModel: LaunchesListViewModel {
                 .map{ launches in
                 
                     debugLog("lauches: \(launches)")
-                    return launches.map{ $0}}
+                    return launches.map{ $0} }
                 
                 .subscribe(
                     onNext: { [weak self] models in
@@ -68,16 +74,35 @@ class DefaultLaunchesListViewModel: LaunchesListViewModel {
                         .filter{ launch in
                             return launch.upcoming == upcomping && launch.date.contains(self.availableYears[yearIndex]) == true}
                     
+                    self.filteredLaunches = filtered
+                    
+                    let filteredViewModels = filtered
                         .map{LaunchViewModel($0)}
                     
                     debugLog("filtered: \(filtered)")
-                    return filtered
+                    return filteredViewModels
                     
                 }.bind(to: self.launches)
             
                 .disposed(by: self.bag)
         }
         .disposed(by: self.bag)
+        
+        
+        self.launchSelected.subscribe { [weak self] index in
+            guard let `self` = self else { return }
+            
+            guard self.filteredLaunches.indices.contains(index) else {return}
+
+            self.router.showLaunchDetails(self.filteredLaunches[index])
+            
+        } onError: { error in
+            
+        } onCompleted: {
+            
+        }.disposed(by: self.bag)
+
+        
     }
     
     // MARK: - OUTPUT
@@ -87,10 +112,6 @@ class DefaultLaunchesListViewModel: LaunchesListViewModel {
     
     var availableEvents: [String] {
         ["Successful", "Upcoming"]
-    }
-    
-    func showLaunchDetails(at index: Int) {
-        
     }
 }
 

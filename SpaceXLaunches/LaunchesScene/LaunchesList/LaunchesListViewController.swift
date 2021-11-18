@@ -58,7 +58,7 @@ class LaunchesListViewController: UIViewController, StoryboardInstantiable {
         
         tableView.rx.itemSelected.bind { [weak self] indexPath in
             debugLog("selected:: index: \(indexPath.row)")
-            self?.viewModel.showLaunchDetails(at: indexPath.row)
+            self?.viewModel.launchSelected.onNext(indexPath.row)
         }.disposed(by: bag)
 
 
