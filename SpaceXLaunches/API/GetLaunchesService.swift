@@ -195,7 +195,7 @@ struct GetLaunchesResponseElement: Codable {
     
     func toDomain() -> Launch{
         Launch(name: name,
-               number: String(flightNumber),
+               number: flightNumber,
                date: dateUTC,
                details: details ?? "",
                iconData: nil,
@@ -335,7 +335,7 @@ func newJSONEncoder() -> JSONEncoder {
 
 struct Launch{
     let name: String
-    let number: String
+    let number: Int
     let date: String
     let details: String
     let iconData: Data?

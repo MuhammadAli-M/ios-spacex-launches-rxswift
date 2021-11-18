@@ -109,7 +109,7 @@ struct LaunchViewModel{
     
     init(_ model: Launch){
         name = model.name
-        number = model.number
+        number = String(model.number)
         date = model.date
         details = model.details
         iconData =  model.iconData

@@ -26,9 +26,6 @@
                                     <segment title="2020"/>
                                     <segment title="2021"/>
                                 </segments>
-                                <connections>
-                                    <action selector="yearChanged:" destination="mrg-aK-cPW" eventType="valueChanged" id="UaM-6A-cIb"/>
-                                </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RzQ-fk-m93">
                                 <rect key="frame" x="94" y="95" width="187.5" height="32"/>
@@ -36,9 +33,6 @@
                                     <segment title="Successful"/>
                                     <segment title="Upcoming"/>
                                 </segments>
-                                <connections>
-                                    <action selector="eventChanged:" destination="mrg-aK-cPW" eventType="valueChanged" id="2uX-az-6MP"/>
-                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ua3-gQ-ada">
                                 <rect key="frame" x="16" y="142" width="343" height="505"/>
