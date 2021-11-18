@@ -25,6 +25,10 @@
 		54DBCA4727443E4C0026CC0E /* LaunchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA4627443E4B0026CC0E /* LaunchTableViewCell.swift */; };
 		54DBCA872744F2B20026CC0E /* GetLaunchesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA852744F2B20026CC0E /* GetLaunchesService.swift */; };
 		54DBCA882744F2B20026CC0E /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA862744F2B20026CC0E /* Endpoint.swift */; };
+		54F616CB27461E8700EEDD93 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F616CA27461E8700EEDD93 /* AppFlowCoordinator.swift */; };
+		54F616CD2746232600EEDD93 /* LaunchesSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F616CC2746232600EEDD93 /* LaunchesSceneDIContainer.swift */; };
+		54F616CF2746234500EEDD93 /* LaunchesSceneFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F616CE2746234500EEDD93 /* LaunchesSceneFlowCoordinator.swift */; };
+		54F616D1274623DB00EEDD93 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F616D0274623DB00EEDD93 /* AppDIContainer.swift */; };
 		F5A973A15A429E64384D1833 /* Pods_SpaceXLaunchesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7E6D9645E568AC528F2D44 /* Pods_SpaceXLaunchesTests.framework */; };
 		F9604D611BFF7867D82BE6BF /* Pods_SpaceXLaunches.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBC217DBC06DB0F635D389AA /* Pods_SpaceXLaunches.framework */; };
 /* End PBXBuildFile section */
@@ -64,12 +68,16 @@
 		54DBCA1227439BA90026CC0E /* SpaceXLaunchesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceXLaunchesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		54DBCA3027439D200026CC0E /* Alertable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		54DBCA3127439D200026CC0E /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
-		54DBCA40274439AD0026CC0E /* LaunchesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LaunchesListViewController.swift; path = LaunchesList/LaunchesListViewController.swift; sourceTree = "<group>"; };
-		54DBCA41274439AD0026CC0E /* LaunchesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LaunchesListViewModel.swift; path = LaunchesList/LaunchesListViewModel.swift; sourceTree = "<group>"; };
-		54DBCA42274439AD0026CC0E /* LaunchesListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchesListViewController.storyboard; path = LaunchesList/LaunchesListViewController.storyboard; sourceTree = "<group>"; };
+		54DBCA40274439AD0026CC0E /* LaunchesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesListViewController.swift; sourceTree = "<group>"; };
+		54DBCA41274439AD0026CC0E /* LaunchesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesListViewModel.swift; sourceTree = "<group>"; };
+		54DBCA42274439AD0026CC0E /* LaunchesListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchesListViewController.storyboard; sourceTree = "<group>"; };
 		54DBCA4627443E4B0026CC0E /* LaunchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchTableViewCell.swift; sourceTree = "<group>"; };
 		54DBCA852744F2B20026CC0E /* GetLaunchesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLaunchesService.swift; sourceTree = "<group>"; };
 		54DBCA862744F2B20026CC0E /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		54F616CA27461E8700EEDD93 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
+		54F616CC2746232600EEDD93 /* LaunchesSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesSceneDIContainer.swift; sourceTree = "<group>"; };
+		54F616CE2746234500EEDD93 /* LaunchesSceneFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesSceneFlowCoordinator.swift; sourceTree = "<group>"; };
+		54F616D0274623DB00EEDD93 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		801631F562A875ABB67D93B9 /* Pods-SpaceXLaunchesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceXLaunchesTests.release.xcconfig"; path = "Target Support Files/Pods-SpaceXLaunchesTests/Pods-SpaceXLaunchesTests.release.xcconfig"; sourceTree = "<group>"; };
 		937E2B83FC0E8A0D9733873A /* Pods_SpaceXLaunches_SpaceXLaunchesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpaceXLaunches_SpaceXLaunchesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96C4F7CD8001DFE037B28BE1 /* Pods-SpaceXLaunchesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceXLaunchesTests.debug.xcconfig"; path = "Target Support Files/Pods-SpaceXLaunchesTests/Pods-SpaceXLaunchesTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -134,12 +142,11 @@
 			children = (
 				54DBC9EF27439BA60026CC0E /* AppDelegate.swift */,
 				54DBC9F127439BA60026CC0E /* SceneDelegate.swift */,
+				54F616D0274623DB00EEDD93 /* AppDIContainer.swift */,
+				54F616CA27461E8700EEDD93 /* AppFlowCoordinator.swift */,
+				54F616D2274623F700EEDD93 /* LaunchesScene */,
 				54DBC9F327439BA60026CC0E /* ViewController.swift */,
-				54DBCA41274439AD0026CC0E /* LaunchesListViewModel.swift */,
-				54DBCA40274439AD0026CC0E /* LaunchesListViewController.swift */,
-				54DBCA4627443E4B0026CC0E /* LaunchTableViewCell.swift */,
 				54DBCA842744F2B20026CC0E /* API */,
-				54DBCA42274439AD0026CC0E /* LaunchesListViewController.storyboard */,
 				54DBCA2527439D200026CC0E /* Utils */,
 				54DBC9F527439BA60026CC0E /* Main.storyboard */,
 				54DBC9F827439BA80026CC0E /* Assets.xcassets */,
@@ -190,6 +197,27 @@
 				54DBCA862744F2B20026CC0E /* Endpoint.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		54F616D2274623F700EEDD93 /* LaunchesScene */ = {
+			isa = PBXGroup;
+			children = (
+				54F616CC2746232600EEDD93 /* LaunchesSceneDIContainer.swift */,
+				54F616CE2746234500EEDD93 /* LaunchesSceneFlowCoordinator.swift */,
+				54F616D32746245300EEDD93 /* LaunchesList */,
+			);
+			path = LaunchesScene;
+			sourceTree = "<group>";
+		};
+		54F616D32746245300EEDD93 /* LaunchesList */ = {
+			isa = PBXGroup;
+			children = (
+				54DBCA41274439AD0026CC0E /* LaunchesListViewModel.swift */,
+				54DBCA40274439AD0026CC0E /* LaunchesListViewController.swift */,
+				54DBCA4627443E4B0026CC0E /* LaunchTableViewCell.swift */,
+				54DBCA42274439AD0026CC0E /* LaunchesListViewController.storyboard */,
+			);
+			path = LaunchesList;
 			sourceTree = "<group>";
 		};
 		5FA379ABEAA036995098C729 /* Pods */ = {
@@ -455,15 +483,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54F616D1274623DB00EEDD93 /* AppDIContainer.swift in Sources */,
 				54DBCA44274439AD0026CC0E /* LaunchesListViewModel.swift in Sources */,
 				54DBCA43274439AD0026CC0E /* LaunchesListViewController.swift in Sources */,
 				54DBC9F427439BA60026CC0E /* ViewController.swift in Sources */,
 				54DBCA872744F2B20026CC0E /* GetLaunchesService.swift in Sources */,
+				54F616CF2746234500EEDD93 /* LaunchesSceneFlowCoordinator.swift in Sources */,
 				54DBCA3C27439D200026CC0E /* StoryboardInstantiable.swift in Sources */,
 				54DBC9F027439BA60026CC0E /* AppDelegate.swift in Sources */,
 				54DBCA882744F2B20026CC0E /* Endpoint.swift in Sources */,
 				54DBCA3B27439D200026CC0E /* Alertable.swift in Sources */,
 				54DBC9F227439BA60026CC0E /* SceneDelegate.swift in Sources */,
+				54F616CB27461E8700EEDD93 /* AppFlowCoordinator.swift in Sources */,
+				54F616CD2746232600EEDD93 /* LaunchesSceneDIContainer.swift in Sources */,
 				54DBCA4727443E4C0026CC0E /* LaunchTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

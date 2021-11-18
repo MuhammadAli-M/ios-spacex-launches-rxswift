@@ -69,3 +69,9 @@ class LaunchesListViewController: UIViewController, StoryboardInstantiable {
         }).disposed(by: bag)
     }
 }
+
+
+//extension LaunchesListViewController: Storyboardable{
+//    static var storyboardName: StoryboardName = .Main
+//}
+
