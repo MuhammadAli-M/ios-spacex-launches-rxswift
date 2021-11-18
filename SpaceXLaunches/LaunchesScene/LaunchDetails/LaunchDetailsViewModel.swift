@@ -54,7 +54,7 @@ class DefaultLaunchDetailsViewModel: LaunchDetailsViewModel {
 
                     errorLog("Got an error: \(error)")
                     self?.rocketViewModel.accept( nil )
-//                        self?.filteredLaunches = []
+                    
                 })
             .disposed(by: self.bag)
 

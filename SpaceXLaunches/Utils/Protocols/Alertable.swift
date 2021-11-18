@@ -16,3 +16,5 @@ public extension Alertable where Self: UIViewController {
         self.present(alert, animated: true, completion: completion)
     }
 }
+
+extension UIViewController: Alertable { }
