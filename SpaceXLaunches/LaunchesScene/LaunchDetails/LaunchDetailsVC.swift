@@ -13,7 +13,6 @@ import RxCocoa
 class LaunchDetailsVC: UIViewController, StoryboardInstantiable {
     
     @IBOutlet weak var launchImageView: UIImageView!
-    @IBOutlet weak var name: UILabel!
     @IBOutlet weak var link: UILabel!
     @IBOutlet weak var rocketdescription: UILabel!
         
@@ -33,16 +32,16 @@ class LaunchDetailsVC: UIViewController, StoryboardInstantiable {
         
         // TODO: setup outlets
         self.navigationItem.hidesBackButton = true
-        let customBackButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backBtnTapped))
+        let customBackButton = UIBarButtonItem(title: "＜ Back", style: .plain, target: self, action: #selector(backBtnTapped))
            self.navigationItem.leftBarButtonItem = customBackButton
         
-        
+        link.textColor = .systemBlue
+        link.attributedText = "".underLined
         bind(to: viewModel)
         viewModel.viewDidLoad()
     }
     
     func bind(to viewModel: LaunchDetailsViewModel) {
-        
         
         viewModel.rocketViewModel
             .asObservable()
@@ -53,9 +52,17 @@ class LaunchDetailsVC: UIViewController, StoryboardInstantiable {
                 
                 guard let rocketViewModel = rocketViewModel else { return }
     
-                self.name.text = rocketViewModel.name
+                self.title = rocketViewModel.name
                 self.link.text = rocketViewModel.link?.absoluteString
                 self.rocketdescription.text = rocketViewModel.description
+                rocketViewModel.iconData.subscribe(onNext: { [weak self] image in
+                    guard let `self` = self else { return }
+                    
+                    DispatchQueue.main.async { [weak self] in
+                        self?.launchImageView.image = image
+                    }
+                })
+                    .disposed(by: self.bag)
             }, onError: { error in
 
                 errorLog("error from rocketViewModel: \(error.localizedDescription)")
@@ -77,4 +84,13 @@ class LaunchDetailsVC: UIViewController, StoryboardInstantiable {
     @objc func backBtnTapped(){
         viewModel.backBtnTapped()
     }
+}
+
+
+extension String {
+
+    var underLined: NSAttributedString {
+        NSMutableAttributedString(string: self, attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
+    }
+
 }
