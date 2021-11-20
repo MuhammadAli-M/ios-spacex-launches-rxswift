@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		233CB8F5A1D1B248C6EC92A1 /* Pods_SpaceXLaunches_SpaceXLaunchesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 937E2B83FC0E8A0D9733873A /* Pods_SpaceXLaunches_SpaceXLaunchesUITests.framework */; };
 		5432C71E274849C70062856C /* GetImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5432C71D274849C70062856C /* GetImageService.swift */; };
+		5432C7212748D2990062856C /* MockGetLaunchServiceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5432C7202748D2980062856C /* MockGetLaunchServiceResponse.swift */; };
+		5432C7232748D3270062856C /* MockGetRocketServiceRespone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5432C7222748D3270062856C /* MockGetRocketServiceRespone.swift */; };
+		5432C7262748D3C90062856C /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5432C7252748D3C90062856C /* Launch.swift */; };
 		54A9CCED2747A40200A3B65B /* LaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A9CCEC2747A40200A3B65B /* LaunchViewModel.swift */; };
 		54DBC9F027439BA60026CC0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBC9EF27439BA60026CC0E /* AppDelegate.swift */; };
 		54DBC9F227439BA60026CC0E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBC9F127439BA60026CC0E /* SceneDelegate.swift */; };
@@ -62,6 +65,9 @@
 		228F79D33072BDEF3DF8E75F /* Pods-SpaceXLaunches-SpaceXLaunchesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceXLaunches-SpaceXLaunchesUITests.release.xcconfig"; path = "Target Support Files/Pods-SpaceXLaunches-SpaceXLaunchesUITests/Pods-SpaceXLaunches-SpaceXLaunchesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3EAC10301D004BF061F8634B /* Pods-SpaceXLaunches-SpaceXLaunchesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceXLaunches-SpaceXLaunchesUITests.debug.xcconfig"; path = "Target Support Files/Pods-SpaceXLaunches-SpaceXLaunchesUITests/Pods-SpaceXLaunches-SpaceXLaunchesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5432C71D274849C70062856C /* GetImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetImageService.swift; sourceTree = "<group>"; };
+		5432C7202748D2980062856C /* MockGetLaunchServiceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetLaunchServiceResponse.swift; sourceTree = "<group>"; };
+		5432C7222748D3270062856C /* MockGetRocketServiceRespone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetRocketServiceRespone.swift; sourceTree = "<group>"; };
+		5432C7252748D3C90062856C /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
 		54A9CCEC2747A40200A3B65B /* LaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewModel.swift; sourceTree = "<group>"; };
 		54DBC9EC27439BA60026CC0E /* SpaceXLaunches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceXLaunches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54DBC9EF27439BA60026CC0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +137,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5432C71F2748D2650062856C /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				5432C7202748D2980062856C /* MockGetLaunchServiceResponse.swift */,
+				5432C7222748D3270062856C /* MockGetRocketServiceRespone.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		5432C7242748D3A70062856C /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				5432C7252748D3C90062856C /* Launch.swift */,
+				54F616DF2746378100EEDD93 /* Rocket.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		54DBC9E327439BA50026CC0E = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +184,7 @@
 				54DBC9F127439BA60026CC0E /* SceneDelegate.swift */,
 				54F616D0274623DB00EEDD93 /* AppDIContainer.swift */,
 				54F616CA27461E8700EEDD93 /* AppFlowCoordinator.swift */,
+				5432C7242748D3A70062856C /* Domain */,
 				54F616D2274623F700EEDD93 /* LaunchesScene */,
 				54DBC9F327439BA60026CC0E /* ViewController.swift */,
 				54DBCA842744F2B20026CC0E /* API */,
@@ -209,6 +234,7 @@
 		54DBCA842744F2B20026CC0E /* API */ = {
 			isa = PBXGroup;
 			children = (
+				5432C71F2748D2650062856C /* Mocks */,
 				54DBCA852744F2B20026CC0E /* GetLaunchesService.swift */,
 				54F4DEF22746C22500919F7C /* GetRocketService.swift */,
 				5432C71D274849C70062856C /* GetImageService.swift */,
@@ -231,11 +257,11 @@
 		54F616D32746245300EEDD93 /* LaunchesList */ = {
 			isa = PBXGroup;
 			children = (
-				54DBCA41274439AD0026CC0E /* LaunchesListViewModel.swift */,
+				54DBCA42274439AD0026CC0E /* LaunchesListViewController.storyboard */,
 				54DBCA40274439AD0026CC0E /* LaunchesListViewController.swift */,
 				54DBCA4627443E4B0026CC0E /* LaunchTableViewCell.swift */,
+				54DBCA41274439AD0026CC0E /* LaunchesListViewModel.swift */,
 				54A9CCEC2747A40200A3B65B /* LaunchViewModel.swift */,
-				54DBCA42274439AD0026CC0E /* LaunchesListViewController.storyboard */,
 			);
 			path = LaunchesList;
 			sourceTree = "<group>";
@@ -243,11 +269,10 @@
 		54F616DA2746279B00EEDD93 /* LaunchDetails */ = {
 			isa = PBXGroup;
 			children = (
-				54F616D52746278900EEDD93 /* LaunchDetailsVC.swift */,
 				54F616D62746278900EEDD93 /* LaunchDetailsVC.storyboard */,
+				54F616D52746278900EEDD93 /* LaunchDetailsVC.swift */,
 				54F616D42746278900EEDD93 /* LaunchDetailsViewModel.swift */,
 				54F616DD2746366900EEDD93 /* RocketViewModel.swift */,
-				54F616DF2746378100EEDD93 /* Rocket.swift */,
 			);
 			path = LaunchDetails;
 			sourceTree = "<group>";
@@ -518,12 +543,15 @@
 			files = (
 				54F616D1274623DB00EEDD93 /* AppDIContainer.swift in Sources */,
 				54DBCA44274439AD0026CC0E /* LaunchesListViewModel.swift in Sources */,
+				5432C7212748D2990062856C /* MockGetLaunchServiceResponse.swift in Sources */,
 				54DBCA43274439AD0026CC0E /* LaunchesListViewController.swift in Sources */,
 				54A9CCED2747A40200A3B65B /* LaunchViewModel.swift in Sources */,
 				54DBC9F427439BA60026CC0E /* ViewController.swift in Sources */,
 				54DBCA872744F2B20026CC0E /* GetLaunchesService.swift in Sources */,
 				54F616CF2746234500EEDD93 /* LaunchesSceneFlowCoordinator.swift in Sources */,
+				5432C7232748D3270062856C /* MockGetRocketServiceRespone.swift in Sources */,
 				54F4DEF32746C22500919F7C /* GetRocketService.swift in Sources */,
+				5432C7262748D3C90062856C /* Launch.swift in Sources */,
 				54F616DE2746366900EEDD93 /* RocketViewModel.swift in Sources */,
 				54DBCA3C27439D200026CC0E /* StoryboardInstantiable.swift in Sources */,
 				54DBC9F027439BA60026CC0E /* AppDelegate.swift in Sources */,

@@ -73,4 +73,3 @@ extension DefaultLaunchDetailsViewModel {
         router.showLaunchesList()
     }
 }
-}

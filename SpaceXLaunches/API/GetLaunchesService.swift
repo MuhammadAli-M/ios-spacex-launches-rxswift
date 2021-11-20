@@ -257,8 +257,6 @@ struct Reddit: Codable {
     let media, recovery: String?
 }
 
-typealias RocketID = String
-
     
 // MARK: - Helper functions for creating encoders and decoders
 
@@ -278,14 +276,3 @@ func newJSONEncoder() -> JSONEncoder {
     return encoder
 }
 
-
-
-struct Launch{
-    let name: String
-    let number: Int
-    let date: Date
-    let details: String
-    let icon: String?
-    let upcoming: Bool
-    let rocketID: RocketID
-}
