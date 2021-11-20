@@ -20,7 +20,6 @@
 		54DBC9F727439BA60026CC0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54DBC9F527439BA60026CC0E /* Main.storyboard */; };
 		54DBC9F927439BA80026CC0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54DBC9F827439BA80026CC0E /* Assets.xcassets */; };
 		54DBC9FC27439BA80026CC0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54DBC9FA27439BA80026CC0E /* LaunchScreen.storyboard */; };
-		54DBCA0727439BA90026CC0E /* SpaceXLaunchesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA0627439BA90026CC0E /* SpaceXLaunchesTests.swift */; };
 		54DBCA3B27439D200026CC0E /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA3027439D200026CC0E /* Alertable.swift */; };
 		54DBCA3C27439D200026CC0E /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA3127439D200026CC0E /* StoryboardInstantiable.swift */; };
 		54DBCA43274439AD0026CC0E /* LaunchesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA40274439AD0026CC0E /* LaunchesListVC.swift */; };
@@ -78,7 +77,6 @@
 		54DBC9FB27439BA80026CC0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		54DBC9FD27439BA80026CC0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54DBCA0227439BA90026CC0E /* SpaceXLaunchesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceXLaunchesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		54DBCA0627439BA90026CC0E /* SpaceXLaunchesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceXLaunchesTests.swift; sourceTree = "<group>"; };
 		54DBCA0C27439BA90026CC0E /* SpaceXLaunchesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceXLaunchesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54DBCA3027439D200026CC0E /* Alertable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		54DBCA3127439D200026CC0E /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
@@ -197,7 +195,6 @@
 		54DBCA0527439BA90026CC0E /* SpaceXLaunchesTests */ = {
 			isa = PBXGroup;
 			children = (
-				54DBCA0627439BA90026CC0E /* SpaceXLaunchesTests.swift */,
 				5432C7272748DDF40062856C /* LaunchViewModelTests.swift */,
 			);
 			path = SpaceXLaunchesTests;
@@ -561,7 +558,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54DBCA0727439BA90026CC0E /* SpaceXLaunchesTests.swift in Sources */,
 				5432C7282748DDF40062856C /* LaunchViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
