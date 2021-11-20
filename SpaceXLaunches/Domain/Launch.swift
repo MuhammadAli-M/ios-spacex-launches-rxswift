@@ -16,5 +16,6 @@ struct Launch{
     let details: String
     let icon: String?
     let upcoming: Bool
+    let successful: Bool
     let rocketID: RocketID
 }

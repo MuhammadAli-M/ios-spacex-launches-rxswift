@@ -61,8 +61,8 @@ class DefaultLaunchesListViewModel: LaunchesListViewModel {
                     let filtered = launchesValues
                         .filter{ launch in
                             let upcomping = self.availableEvents[eventIndex] == "Upcoming"
-                            
-                            return launch.upcoming == upcomping && launch.date.description.contains(self.availableYears[yearIndex]) == true}
+                            let success = self.availableEvents[eventIndex] == "Successful"
+                            return (launch.upcoming == upcomping || launch.successful == success) && launch.date.description.contains(self.availableYears[yearIndex]) == true}
                     
                     self.filteredLaunches = filtered
                                         
