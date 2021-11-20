@@ -138,19 +138,20 @@ struct GetLaunchesResponseElement: Codable {
     
     func toDomain() -> Launch{
         
-        let icon = [links.flickr.small, links.flickr.original,[links.patch.small, links.patch.large].compactMap{ $0}]
+        let icon = [links.flickr.small, links.flickr.original]
             .filter{ $0.isEmpty == false }
             .first?
             .compactMap{ $0}
             .first
         
         return Launch(name: name,
-               number: flightNumber,
-               date: Date(timeIntervalSince1970: TimeInterval(dateUnix)),
-               details: details ?? "",
-               icon: icon,
-               upcoming: upcoming,
-               rocketID: rocketId)
+                      number: flightNumber,
+                      date: Date(timeIntervalSince1970: TimeInterval(dateUnix)),
+                      details: details ?? "",
+                      icon: icon,
+                      upcoming: upcoming,
+                      successful: success ?? false,
+                      rocketID: rocketId)
     }
 }
 
