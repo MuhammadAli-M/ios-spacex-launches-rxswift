@@ -1,5 +1,5 @@
 //
-//  LaunchesListViewController.swift
+//  LaunchesListVC.swift
 //  SpaceXLaunches
 //
 //  Created by Muhammad Adam on 16/11/2021.
@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class LaunchesListViewController: UIViewController, StoryboardInstantiable {
+class LaunchesListVC: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var yearSegmentedControl: UISegmentedControl!
     @IBOutlet weak var eventSegmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -18,8 +18,8 @@ class LaunchesListViewController: UIViewController, StoryboardInstantiable {
     var viewModel: LaunchesListViewModel!
     private var bag = DisposeBag()
 
-    class func create(with viewModel: LaunchesListViewModel) -> LaunchesListViewController {
-        let vc = LaunchesListViewController.instantiateViewController()
+    class func create(with viewModel: LaunchesListViewModel) -> LaunchesListVC {
+        let vc = LaunchesListVC.instantiateViewController()
         vc.viewModel = viewModel
         return vc
     }

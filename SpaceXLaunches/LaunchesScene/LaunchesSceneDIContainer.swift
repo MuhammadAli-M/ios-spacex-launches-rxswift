@@ -7,9 +7,6 @@
 
 import UIKit
 
-// TODO: Remove it after renaming
-typealias LaunchesListVC = LaunchesListViewController
-
 final class LaunchesSceneDIContainer {
     
     init(){
@@ -23,7 +20,7 @@ extension LaunchesSceneDIContainer: LaunchesSceneDependencies{
         
         let viewModel = DefaultLaunchesListViewModel(router: router)
         // TODO: setup the view model
-        let vc = LaunchesListViewController.create(with: viewModel)
+        let vc = LaunchesListVC.create(with: viewModel)
         return vc
     }
     

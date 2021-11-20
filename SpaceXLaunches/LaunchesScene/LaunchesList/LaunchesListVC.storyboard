@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Launches List View Controller-->
+        <!--Launches ListVC-->
         <scene sceneID="wNu-vz-AgM">
             <objects>
-                <viewController storyboardIdentifier="LaunchesListViewControllerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mrg-aK-cPW" customClass="LaunchesListViewController" customModule="SpaceXLaunches" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LaunchesListVCID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mrg-aK-cPW" customClass="LaunchesListVC" customModule="SpaceXLaunches" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lNf-Tp-JWb"/>
                         <viewControllerLayoutGuide type="bottom" id="PXa-7e-hdt"/>

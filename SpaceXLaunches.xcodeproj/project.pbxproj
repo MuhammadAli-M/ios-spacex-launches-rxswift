@@ -24,9 +24,9 @@
 		54DBCA1327439BA90026CC0E /* SpaceXLaunchesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA1227439BA90026CC0E /* SpaceXLaunchesUITestsLaunchTests.swift */; };
 		54DBCA3B27439D200026CC0E /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA3027439D200026CC0E /* Alertable.swift */; };
 		54DBCA3C27439D200026CC0E /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA3127439D200026CC0E /* StoryboardInstantiable.swift */; };
-		54DBCA43274439AD0026CC0E /* LaunchesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA40274439AD0026CC0E /* LaunchesListViewController.swift */; };
+		54DBCA43274439AD0026CC0E /* LaunchesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA40274439AD0026CC0E /* LaunchesListVC.swift */; };
 		54DBCA44274439AD0026CC0E /* LaunchesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA41274439AD0026CC0E /* LaunchesListViewModel.swift */; };
-		54DBCA45274439AD0026CC0E /* LaunchesListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54DBCA42274439AD0026CC0E /* LaunchesListViewController.storyboard */; };
+		54DBCA45274439AD0026CC0E /* LaunchesListVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54DBCA42274439AD0026CC0E /* LaunchesListVC.storyboard */; };
 		54DBCA4727443E4C0026CC0E /* LaunchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA4627443E4B0026CC0E /* LaunchTableViewCell.swift */; };
 		54DBCA872744F2B20026CC0E /* GetLaunchesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA852744F2B20026CC0E /* GetLaunchesService.swift */; };
 		54DBCA882744F2B20026CC0E /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA862744F2B20026CC0E /* Endpoint.swift */; };
@@ -84,9 +84,9 @@
 		54DBCA1227439BA90026CC0E /* SpaceXLaunchesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceXLaunchesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		54DBCA3027439D200026CC0E /* Alertable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		54DBCA3127439D200026CC0E /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
-		54DBCA40274439AD0026CC0E /* LaunchesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesListViewController.swift; sourceTree = "<group>"; };
+		54DBCA40274439AD0026CC0E /* LaunchesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesListVC.swift; sourceTree = "<group>"; };
 		54DBCA41274439AD0026CC0E /* LaunchesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesListViewModel.swift; sourceTree = "<group>"; };
-		54DBCA42274439AD0026CC0E /* LaunchesListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchesListViewController.storyboard; sourceTree = "<group>"; };
+		54DBCA42274439AD0026CC0E /* LaunchesListVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchesListVC.storyboard; sourceTree = "<group>"; };
 		54DBCA4627443E4B0026CC0E /* LaunchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchTableViewCell.swift; sourceTree = "<group>"; };
 		54DBCA852744F2B20026CC0E /* GetLaunchesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLaunchesService.swift; sourceTree = "<group>"; };
 		54DBCA862744F2B20026CC0E /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -257,8 +257,8 @@
 		54F616D32746245300EEDD93 /* LaunchesList */ = {
 			isa = PBXGroup;
 			children = (
-				54DBCA42274439AD0026CC0E /* LaunchesListViewController.storyboard */,
-				54DBCA40274439AD0026CC0E /* LaunchesListViewController.swift */,
+				54DBCA42274439AD0026CC0E /* LaunchesListVC.storyboard */,
+				54DBCA40274439AD0026CC0E /* LaunchesListVC.swift */,
 				54DBCA4627443E4B0026CC0E /* LaunchTableViewCell.swift */,
 				54DBCA41274439AD0026CC0E /* LaunchesListViewModel.swift */,
 				54A9CCEC2747A40200A3B65B /* LaunchViewModel.swift */,
@@ -411,7 +411,7 @@
 			files = (
 				54DBC9FC27439BA80026CC0E /* LaunchScreen.storyboard in Resources */,
 				54DBC9F927439BA80026CC0E /* Assets.xcassets in Resources */,
-				54DBCA45274439AD0026CC0E /* LaunchesListViewController.storyboard in Resources */,
+				54DBCA45274439AD0026CC0E /* LaunchesListVC.storyboard in Resources */,
 				54F616D92746278900EEDD93 /* LaunchDetailsVC.storyboard in Resources */,
 				54DBC9F727439BA60026CC0E /* Main.storyboard in Resources */,
 			);
@@ -544,7 +544,7 @@
 				54F616D1274623DB00EEDD93 /* AppDIContainer.swift in Sources */,
 				54DBCA44274439AD0026CC0E /* LaunchesListViewModel.swift in Sources */,
 				5432C7212748D2990062856C /* MockGetLaunchServiceResponse.swift in Sources */,
-				54DBCA43274439AD0026CC0E /* LaunchesListViewController.swift in Sources */,
+				54DBCA43274439AD0026CC0E /* LaunchesListVC.swift in Sources */,
 				54A9CCED2747A40200A3B65B /* LaunchViewModel.swift in Sources */,
 				54DBC9F427439BA60026CC0E /* ViewController.swift in Sources */,
 				54DBCA872744F2B20026CC0E /* GetLaunchesService.swift in Sources */,
