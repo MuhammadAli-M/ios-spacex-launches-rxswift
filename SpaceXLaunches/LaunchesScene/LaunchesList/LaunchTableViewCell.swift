@@ -20,7 +20,6 @@ class LaunchTableViewCell: UITableViewCell {
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var details: UILabel!
     @IBOutlet weak var launchImageView: UIImageView!
-    @IBOutlet weak var favoriteImageView: UIImageView!
     @IBOutlet weak var imageHeight: NSLayoutConstraint!
     let heightConstant: CGFloat = 269
     static let Id = "LaunchTableViewCell"
@@ -36,12 +35,6 @@ class LaunchTableViewCell: UITableViewCell {
         date.textColor = .secondaryLabel
         date.font = UIFont.preferredFont(forTextStyle: .body)
     }
-    
-    fileprivate func setupFavoriteImageView() {
-        favoriteImageView.tintColor = .systemRed
-        favoriteImageView.contentMode = .scaleAspectFit
-        favoriteImageView.isUserInteractionEnabled = true
-    }
 }
 
 // TODO: Fix to bind on it
@@ -56,9 +49,14 @@ extension LaunchTableViewCell{
             
             GetImageService.shared.getImage(path: viewModel.iconPath)
                 .map { UIImage(data: $0)}
-                .subscribe(onNext: { image in
-                    DispatchQueue.main.async {
+                .subscribe(onNext: { [weak self] image in
+                    
+                    guard let `self` = self else { return }
+                    
+                    DispatchQueue.main.async { [weak self] in
 
+                        guard let `self` = self else { return }
+                        
                         guard let image = image else {
                             self.imageHeight.constant = 0
                             return
@@ -73,7 +71,10 @@ extension LaunchTableViewCell{
                         } completion: { _ in }
 
                     }
-                }, onError: { error in
+                }, onError: { [weak self] error in
+                    
+                    guard let `self` = self else { return }
+                    
                     errorLog("failed to fetch image: \(error.localizedDescription)")
                     self.imageHeight.constant = 0
                 }, onCompleted: {

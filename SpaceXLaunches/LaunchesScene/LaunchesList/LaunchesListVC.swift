@@ -53,8 +53,9 @@ class LaunchesListVC: UIViewController, StoryboardInstantiable {
     
     func bind(to viewModel: LaunchesListViewModel) {
         
-        viewModel.title.subscribe { titleString in
-            self.title = titleString
+        viewModel.title.subscribe { [weak self] titleString in
+            
+            self?.title = titleString
         }.disposed(by: bag)
                                 
         

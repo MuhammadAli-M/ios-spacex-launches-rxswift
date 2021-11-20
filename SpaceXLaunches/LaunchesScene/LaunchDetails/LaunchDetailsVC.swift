@@ -63,19 +63,18 @@ class LaunchDetailsVC: UIViewController, StoryboardInstantiable {
                     }
                 })
                     .disposed(by: self.bag)
-            }, onError: { error in
+            
+            }, onError: { [weak self] error in
 
                 errorLog("error from rocketViewModel: \(error.localizedDescription)")
 
-                self.showAlert(title: "Error",
+                self?.showAlert(title: "Error",
                                message: error.localizedDescription,
                                preferredStyle: .alert) {
                     // TODO: back to launches
                 }
 
-            }, onCompleted: {
-
-            })
+            }, onCompleted: { })
             
             .disposed(by: bag)
     }

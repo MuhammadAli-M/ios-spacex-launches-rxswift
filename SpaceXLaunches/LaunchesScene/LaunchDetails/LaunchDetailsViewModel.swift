@@ -11,7 +11,6 @@ import RxSwift
 import RxRelay
 
 protocol LaunchDetailsViewModelInput {
-    func viewDidLoad()
     func backBtnTapped()
 }
 
@@ -56,7 +55,7 @@ class DefaultLaunchDetailsViewModel: LaunchDetailsViewModel {
                     self?.rocketViewModel.accept( nil )
                     
                 })
-            .disposed(by: self.bag)
+            .disposed(by: bag)
 
     }
     // MARK: - OUTPUT
@@ -66,8 +65,6 @@ class DefaultLaunchDetailsViewModel: LaunchDetailsViewModel {
 
 // MARK: - INPUT. View event methods
 extension DefaultLaunchDetailsViewModel {
-    func viewDidLoad() {
-    }
     
     func backBtnTapped(){
         router.showLaunchesList()

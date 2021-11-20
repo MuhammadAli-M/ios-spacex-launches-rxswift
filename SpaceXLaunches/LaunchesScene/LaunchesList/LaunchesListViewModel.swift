@@ -12,7 +12,6 @@ import RxRelay
 // TODO: assure no capture for self
 
 protocol LaunchesListViewModelInput {
-    func viewDidLoad()
 }
 
 protocol LaunchesListViewModelOutput {
@@ -45,13 +44,16 @@ class DefaultLaunchesListViewModel: LaunchesListViewModel {
     
     func setupBindings(){
         
-        yearAndEventSelected.subscribe { (yearIndex: Int, eventIndex: Int) in
+        yearAndEventSelected.subscribe { [weak self] (yearIndex: Int, eventIndex: Int) in
+            guard let `self` = self else { return }
             
             GetLaunchesService.shared.getLaunches()
             
                 .throttle(.seconds(5), scheduler: ConcurrentMainScheduler.instance)
             
-                .flatMapLatest({ launchesValues -> Observable<[Launch]> in
+                .flatMapLatest({ [weak self] launchesValues -> Observable<[Launch]> in
+                    
+                    guard let `self` = self else { return Observable.just([])}
                     
                     self.allLaunches = launchesValues
                     debugLog("all lauches: \(launchesValues.count)")
@@ -114,12 +116,7 @@ class DefaultLaunchesListViewModel: LaunchesListViewModel {
     }
 }
 
-// MARK: - INPUT. View event methods
-extension DefaultLaunchesListViewModel {
-    func viewDidLoad() {
-        
-    }
-}
+
 
 
 
