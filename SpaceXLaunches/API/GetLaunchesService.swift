@@ -73,9 +73,6 @@ class GetLaunchesService: LaunchesService{
     
 }
 
-//enum GetLaunchesQueryKey: String, QueryKey {
-//
-//}
 enum GetLaunchesQueryKey: String, QueryKey {
     var description: String { self.rawValue }
     case options
@@ -140,11 +137,18 @@ struct GetLaunchesResponseElement: Codable {
     }
     
     func toDomain() -> Launch{
-        Launch(name: name,
+        
+        let icon = [links.flickr.small, links.flickr.original,[links.patch.small, links.patch.large].compactMap{ $0}]
+            .filter{ $0.isEmpty == false }
+            .first?
+            .compactMap{ $0}
+            .first
+        
+        return Launch(name: name,
                number: flightNumber,
-               date: dateUTC,
+               date: Date(timeIntervalSince1970: TimeInterval(dateUnix)),
                details: details ?? "",
-               iconData: nil,
+               icon: icon,
                upcoming: upcoming,
                rocketID: rocketId)
     }
@@ -279,9 +283,9 @@ func newJSONEncoder() -> JSONEncoder {
 struct Launch{
     let name: String
     let number: Int
-    let date: String
+    let date: Date
     let details: String
-    let iconData: Data?
+    let icon: String?
     let upcoming: Bool
     let rocketID: RocketID
 }
