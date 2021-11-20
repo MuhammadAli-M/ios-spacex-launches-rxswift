@@ -12,6 +12,7 @@
 		5432C7212748D2990062856C /* MockGetLaunchServiceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5432C7202748D2980062856C /* MockGetLaunchServiceResponse.swift */; };
 		5432C7232748D3270062856C /* MockGetRocketServiceRespone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5432C7222748D3270062856C /* MockGetRocketServiceRespone.swift */; };
 		5432C7262748D3C90062856C /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5432C7252748D3C90062856C /* Launch.swift */; };
+		5432C7282748DDF40062856C /* LaunchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5432C7272748DDF40062856C /* LaunchViewModelTests.swift */; };
 		54A9CCED2747A40200A3B65B /* LaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A9CCEC2747A40200A3B65B /* LaunchViewModel.swift */; };
 		54DBC9F027439BA60026CC0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBC9EF27439BA60026CC0E /* AppDelegate.swift */; };
 		54DBC9F227439BA60026CC0E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBC9F127439BA60026CC0E /* SceneDelegate.swift */; };
@@ -20,8 +21,6 @@
 		54DBC9F927439BA80026CC0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54DBC9F827439BA80026CC0E /* Assets.xcassets */; };
 		54DBC9FC27439BA80026CC0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54DBC9FA27439BA80026CC0E /* LaunchScreen.storyboard */; };
 		54DBCA0727439BA90026CC0E /* SpaceXLaunchesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA0627439BA90026CC0E /* SpaceXLaunchesTests.swift */; };
-		54DBCA1127439BA90026CC0E /* SpaceXLaunchesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA1027439BA90026CC0E /* SpaceXLaunchesUITests.swift */; };
-		54DBCA1327439BA90026CC0E /* SpaceXLaunchesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA1227439BA90026CC0E /* SpaceXLaunchesUITestsLaunchTests.swift */; };
 		54DBCA3B27439D200026CC0E /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA3027439D200026CC0E /* Alertable.swift */; };
 		54DBCA3C27439D200026CC0E /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA3127439D200026CC0E /* StoryboardInstantiable.swift */; };
 		54DBCA43274439AD0026CC0E /* LaunchesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DBCA40274439AD0026CC0E /* LaunchesListVC.swift */; };
@@ -68,6 +67,7 @@
 		5432C7202748D2980062856C /* MockGetLaunchServiceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetLaunchServiceResponse.swift; sourceTree = "<group>"; };
 		5432C7222748D3270062856C /* MockGetRocketServiceRespone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetRocketServiceRespone.swift; sourceTree = "<group>"; };
 		5432C7252748D3C90062856C /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
+		5432C7272748DDF40062856C /* LaunchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewModelTests.swift; sourceTree = "<group>"; };
 		54A9CCEC2747A40200A3B65B /* LaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewModel.swift; sourceTree = "<group>"; };
 		54DBC9EC27439BA60026CC0E /* SpaceXLaunches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceXLaunches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54DBC9EF27439BA60026CC0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,8 +80,6 @@
 		54DBCA0227439BA90026CC0E /* SpaceXLaunchesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceXLaunchesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54DBCA0627439BA90026CC0E /* SpaceXLaunchesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceXLaunchesTests.swift; sourceTree = "<group>"; };
 		54DBCA0C27439BA90026CC0E /* SpaceXLaunchesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceXLaunchesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		54DBCA1027439BA90026CC0E /* SpaceXLaunchesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceXLaunchesUITests.swift; sourceTree = "<group>"; };
-		54DBCA1227439BA90026CC0E /* SpaceXLaunchesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceXLaunchesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		54DBCA3027439D200026CC0E /* Alertable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		54DBCA3127439D200026CC0E /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
 		54DBCA40274439AD0026CC0E /* LaunchesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesListVC.swift; sourceTree = "<group>"; };
@@ -160,7 +158,6 @@
 			children = (
 				54DBC9EE27439BA60026CC0E /* SpaceXLaunches */,
 				54DBCA0527439BA90026CC0E /* SpaceXLaunchesTests */,
-				54DBCA0F27439BA90026CC0E /* SpaceXLaunchesUITests */,
 				54DBC9ED27439BA60026CC0E /* Products */,
 				5FA379ABEAA036995098C729 /* Pods */,
 				C6299DC8C685F5B1C135053F /* Frameworks */,
@@ -201,17 +198,9 @@
 			isa = PBXGroup;
 			children = (
 				54DBCA0627439BA90026CC0E /* SpaceXLaunchesTests.swift */,
+				5432C7272748DDF40062856C /* LaunchViewModelTests.swift */,
 			);
 			path = SpaceXLaunchesTests;
-			sourceTree = "<group>";
-		};
-		54DBCA0F27439BA90026CC0E /* SpaceXLaunchesUITests */ = {
-			isa = PBXGroup;
-			children = (
-				54DBCA1027439BA90026CC0E /* SpaceXLaunchesUITests.swift */,
-				54DBCA1227439BA90026CC0E /* SpaceXLaunchesUITestsLaunchTests.swift */,
-			);
-			path = SpaceXLaunchesUITests;
 			sourceTree = "<group>";
 		};
 		54DBCA2527439D200026CC0E /* Utils */ = {
@@ -573,6 +562,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54DBCA0727439BA90026CC0E /* SpaceXLaunchesTests.swift in Sources */,
+				5432C7282748DDF40062856C /* LaunchViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,8 +570,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54DBCA1127439BA90026CC0E /* SpaceXLaunchesUITests.swift in Sources */,
-				54DBCA1327439BA90026CC0E /* SpaceXLaunchesUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
