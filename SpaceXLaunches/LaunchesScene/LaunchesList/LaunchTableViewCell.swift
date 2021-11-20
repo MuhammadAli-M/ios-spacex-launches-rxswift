@@ -52,33 +52,38 @@ extension LaunchTableViewCell{
         self.launchNumber.text = viewModel.number
         self.date.text = viewModel.date
         self.details.text = viewModel.details
-        viewModel.iconData
-            .subscribe(onNext: { image in
-                DispatchQueue.main.async {
+        if viewModel.iconPath.isEmpty == false{
+            
+            GetImageService.shared.getImage(path: viewModel.iconPath)
+                .map { UIImage(data: $0)}
+                .subscribe(onNext: { image in
+                    DispatchQueue.main.async {
 
-                    guard let image = image else {
-                        self.imageHeight.constant = 0
-                        return
-                    }
-                    
-                    self.launchImageView.alpha = 0
-                    UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn) {
-                        self.imageHeight.constant = self.heightConstant
-                        self.launchImageView.image = image // TODO: convert to bind
-                        self.launchImageView.alpha = 1
+                        guard let image = image else {
+                            self.imageHeight.constant = 0
+                            return
+                        }
                         
-                    } completion: { _ in }
+                        self.launchImageView.alpha = 0
+                        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn) {
+                            self.imageHeight.constant = self.heightConstant
+                            self.launchImageView.image = image // TODO: convert to bind
+                            self.launchImageView.alpha = 1
+                            
+                        } completion: { _ in }
 
-                    
-                }
-            }, onError: { error in
-                errorLog("failed to fetch image: \(error.localizedDescription)")
-                self.imageHeight.constant = 0
-            }, onCompleted: {
+                    }
+                }, onError: { error in
+                    errorLog("failed to fetch image: \(error.localizedDescription)")
+                    self.imageHeight.constant = 0
+                }, onCompleted: {
 
-            }, onDisposed: { debugLog("image request is disposed: \(viewModel.name)")  })
-            .disposed(by: bag)
-        
+                }, onDisposed: { debugLog("image request is disposed: \(viewModel.name)")  })
+                .disposed(by: bag)
+            
+        }else{
+            self.imageHeight.constant = 0
+        }
     }
     
     override func prepareForReuse() {
