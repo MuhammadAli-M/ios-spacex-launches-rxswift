@@ -26,11 +26,6 @@ struct LaunchViewModel{
         date = formatter.string(from: model.date)
         details = model.details
         iconPath = model.upcoming ? model.icon ?? "" : ""
-//        if model.upcoming{
-//            iconData =  GetImageService.shared.getImage(path: model.icon).map { UIImage(data: $0)} // TODO: verfiy it
-//        }else{
-//            iconData = .of(nil)
-//        }
         upcoming = model.upcoming
     }
 }
