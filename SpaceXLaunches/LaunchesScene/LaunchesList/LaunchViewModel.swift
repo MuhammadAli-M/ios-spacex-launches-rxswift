@@ -15,7 +15,6 @@ struct LaunchViewModel{
     let date: String
     let details: String
     let iconPath: String
-//    let iconData: Observable<UIImage?>
     let upcoming: Bool
     
     init(_ model: Launch){
