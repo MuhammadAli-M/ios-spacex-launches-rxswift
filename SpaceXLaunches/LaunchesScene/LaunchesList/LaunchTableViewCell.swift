@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 //import Kingfisher
 
 protocol LaunchTableViewCellDelegate: AnyObject{
@@ -20,22 +21,15 @@ class LaunchTableViewCell: UITableViewCell {
     @IBOutlet weak var details: UILabel!
     @IBOutlet weak var launchImageView: UIImageView!
     @IBOutlet weak var favoriteImageView: UIImageView!
+    @IBOutlet weak var imageHeight: NSLayoutConstraint!
+    let heightConstant: CGFloat = 269
     static let Id = "LaunchTableViewCell"
-    let favoriteImageString = "heart.fill"
-    let notFavoriteImageString = "heart"
-    private var isFavorite = false {
-        didSet{
-            let imageString = isFavorite ? favoriteImageString : notFavoriteImageString
-            favoriteImageView.image = UIImage(systemName: imageString)
-        }
-    }
     var url: String = ""
     weak var delegate: LaunchTableViewCellDelegate?
-
+    
+    var bag: DisposeBag = DisposeBag()
     override func awakeFromNib() {
         super.awakeFromNib()
-        isFavorite = false
-        setupFavoriteImageView()
         name.font = UIFont.preferredFont(forTextStyle: .title2)
         launchNumber.font = UIFont.preferredFont(forTextStyle: .subheadline)
         launchNumber.textColor = .systemBlue
@@ -46,75 +40,50 @@ class LaunchTableViewCell: UITableViewCell {
     fileprivate func setupFavoriteImageView() {
         favoriteImageView.tintColor = .systemRed
         favoriteImageView.contentMode = .scaleAspectFit
-        favoriteImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(favoriteBtnTapped)))
         favoriteImageView.isUserInteractionEnabled = true
-    }
-    
-    @objc fileprivate func favoriteBtnTapped(_ sender: Any) {
-        isFavorite.toggle()
-        delegate?.cell(urlString: self.url, updatesFavoriteState: isFavorite)
     }
 }
 
 // TODO: Fix to bind on it
 extension LaunchTableViewCell{
     func configure(viewModel: LaunchViewModel) {
+        debugLog("will configure launch cell of name: \(viewModel.name)")
         self.name.text = viewModel.name
         self.launchNumber.text = viewModel.number
         self.date.text = viewModel.date
         self.details.text = viewModel.details
-    }
-    
-    func displayImage(url imageUrl: URL?){
-        // TODO: Needs fix
+        viewModel.iconData
+            .subscribe(onNext: { image in
+                DispatchQueue.main.async {
+
+                    guard let image = image else {
+                        self.imageHeight.constant = 0
+                        return
+                    }
+                    
+                    self.launchImageView.alpha = 0
+                    UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn) {
+                        self.imageHeight.constant = self.heightConstant
+                        self.launchImageView.image = image // TODO: convert to bind
+                        self.launchImageView.alpha = 1
+                        
+                    } completion: { _ in }
+
+                    
+                }
+            }, onError: { error in
+                errorLog("failed to fetch image: \(error.localizedDescription)")
+                self.imageHeight.constant = 0
+            }, onCompleted: {
+
+            }, onDisposed: { debugLog("image request is disposed: \(viewModel.name)")  })
+            .disposed(by: bag)
         
-//        guard let url = imageUrl else { return }
-//        let resource = ImageResource(downloadURL: url,
-//                                     cacheKey: url.absoluteString)
-//        let imageCache = ImageCache(name: url.absoluteString)
-//        let processor = DownsamplingImageProcessor(size: launchImageView.bounds.size)
-//                     |> RoundCornerImageProcessor(cornerRadius: 7)
-//        launchImageView.kf.indicatorType = .activity
-//        launchImageView.kf.setImage(
-//            with: resource,
-//            options: [
-//                .processor(processor),
-//                .scaleFactor(UIScreen.main.scale),
-//                .targetCache(imageCache)
-//            ], completionHandler:
-//                {
-//                    result in
-//                    switch result {
-//                    case .success(let value):
-//                        debugLog("image loaded for: \(value.source.url?.absoluteString ?? "")")
-//                        DispatchQueue.main.async { [weak self] in
-//                            self?.setNeedsLayout()
-//                        }
-//                    case .failure(let error):
-//                        errorLog("image failed: \(error.localizedDescription)")
-//                    }
-//                })
-
     }
-}
-
-
-struct LaunchViewModel{
-    let name: String
-    let number: String
-    let date: String
-    let details: String
-    let iconData: Data?
-    let upcoming: Bool
     
-    init(_ model: Launch){
-        name = model.name
-        number = String(model.number)
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d, yyyy HH:mm:ss Z"
-        date = formatter.string(from: model.date)
-        details = model.details
-        iconData =  model.iconData
-        upcoming = model.upcoming
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.bag = DisposeBag()
+        self.launchImageView.image = nil
     }
 }

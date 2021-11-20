@@ -19,7 +19,7 @@ protocol LaunchesListViewModelOutput {
     var yearAndEventSelected: PublishSubject<(yearIndex: Int ,eventIndex: Int )> { get }
     var launchSelected: PublishSubject<(Int)> { get }
 
-    var launches: PublishSubject<[LaunchViewModel]> { get }
+    var launches: BehaviorRelay<[LaunchViewModel]> { get }
     var title: BehaviorRelay<String> { get }
     var availableYears: [String] { get }
     var availableEvents: [String] { get }
@@ -34,11 +34,10 @@ class DefaultLaunchesListViewModel: LaunchesListViewModel {
         setupBindings()
     }
     
-    let launches = PublishSubject<[LaunchViewModel]>()
-    let allLaunches = PublishSubject<[Launch]>()
+    let launches = BehaviorRelay<[LaunchViewModel]>(value: [])
     let title: BehaviorRelay<String> = .init(value: "SpaceX Launches")
     private var filteredLaunches = [Launch]()
-
+    private var allLaunches = [Launch]()
     var yearAndEventSelected = PublishSubject<(yearIndex: Int ,eventIndex: Int )>()
     var launchSelected = PublishSubject<(Int)>()
 
@@ -49,48 +48,46 @@ class DefaultLaunchesListViewModel: LaunchesListViewModel {
         yearAndEventSelected.subscribe { (yearIndex: Int, eventIndex: Int) in
             
             GetLaunchesService.shared.getLaunches()
-                .map{ launches in
-                
-                    debugLog("lauches: \(launches)")
-                    return launches.map{ $0} }
-                
+            
+                .throttle(.seconds(5), scheduler: ConcurrentMainScheduler.instance)
+            
+                .flatMapLatest({ launchesValues -> Observable<[Launch]> in
+                    
+                    self.allLaunches = launchesValues
+                    debugLog("all lauches: \(launchesValues.count)")
+
+                    let filtered = launchesValues
+                        .filter{ launch in
+                            let upcomping = self.availableEvents[eventIndex] == "Upcoming"
+                            
+                            return launch.upcoming == upcomping && launch.date.description.contains(self.availableYears[yearIndex]) == true}
+                    
+                    self.filteredLaunches = filtered
+                                        
+                    debugLog("filtered: \(filtered.count)")
+                    return Observable.of(filtered)
+                })
+            
                 .subscribe(
                     onNext: { [weak self] models in
                         
-                        self?.allLaunches.onNext(models)},
-                    
-                    onError: { [weak self] error in
+                        let viewModels = models.map{ LaunchViewModel($0)}
                         
-                        errorLog("Got an error: \(error)")
-                        self?.allLaunches.onNext([])
+                        debugLog("viewModels: \(viewModels.count)")
+                        
+                        self?.launches.accept( viewModels)
+                    },
+                    onError: { [weak self] error in
+
+                        errorLog("got an error: \(error)")
+                        self?.launches.accept( [])
                     })
             
                 .disposed(by: self.bag)
             
             
-            self.allLaunches
-                .map { launches in
-                    
-                    let upcomping = self.availableEvents[eventIndex] == "Upcoming"
-                    
-                    let filtered = launches
-                        .filter{ launch in
-                            return launch.upcoming == upcomping && launch.date.description.contains(self.availableYears[yearIndex]) == true}
-                    
-                    self.filteredLaunches = filtered
-                    
-                    let filteredViewModels = filtered
-                        .map{LaunchViewModel($0)}
-                    
-                    debugLog("filtered: \(filtered)")
-                    return filteredViewModels
-                    
-                }.bind(to: self.launches)
-            
-                .disposed(by: self.bag)
         }
         .disposed(by: self.bag)
-        
         
         self.launchSelected.subscribe { [weak self] index in
             guard let `self` = self else { return }
@@ -105,7 +102,6 @@ class DefaultLaunchesListViewModel: LaunchesListViewModel {
             
         }.disposed(by: self.bag)
 
-        
     }
     
     // MARK: - OUTPUT

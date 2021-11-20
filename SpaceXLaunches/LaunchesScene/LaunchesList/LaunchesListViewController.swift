@@ -26,6 +26,8 @@ class LaunchesListViewController: UIViewController, StoryboardInstantiable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.estimatedRowHeight = 400
+        tableView.rowHeight = UITableView.automaticDimension
         bind(to: viewModel)
     }
 
@@ -75,9 +77,3 @@ class LaunchesListViewController: UIViewController, StoryboardInstantiable {
         }).disposed(by: bag)
     }
 }
-
-
-//extension LaunchesListViewController: Storyboardable{
-//    static var storyboardName: StoryboardName = .Main
-//}
-
