@@ -38,7 +38,6 @@ class LaunchDetailsVC: UIViewController, StoryboardInstantiable {
         link.textColor = .systemBlue
         link.attributedText = "".underLined
         bind(to: viewModel)
-        viewModel.viewDidLoad()
     }
     
     func bind(to viewModel: LaunchDetailsViewModel) {

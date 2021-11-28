@@ -24,7 +24,7 @@ struct LaunchViewModel{
         formatter.dateFormat = "MMM d, yyyy HH:mm:ss"
         date = formatter.string(from: model.date)
         details = model.details
-        iconPath = model.upcoming ? model.icon ?? "" : ""
+        iconPath = model.icon ?? ""
         upcoming = model.upcoming
     }
 }
