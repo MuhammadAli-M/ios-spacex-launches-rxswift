@@ -45,6 +45,11 @@ extension LaunchTableViewCell{
         self.launchNumber.text = viewModel.number
         self.date.text = viewModel.date
         self.details.text = viewModel.details
+        
+        self.launchImageView.image = nil
+        self.bag = DisposeBag()
+        self.imageHeight.constant = self.heightConstant
+
         if viewModel.iconPath.isEmpty == false{
             
             GetImageService.shared.getImage(path: viewModel.iconPath)
@@ -61,10 +66,8 @@ extension LaunchTableViewCell{
                             self.imageHeight.constant = 0
                             return
                         }
-                        
                         self.launchImageView.alpha = 0
                         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn) {
-                            self.imageHeight.constant = self.heightConstant
                             self.launchImageView.image = image // TODO: convert to bind
                             self.launchImageView.alpha = 1
                             
@@ -85,11 +88,5 @@ extension LaunchTableViewCell{
         }else{
             self.imageHeight.constant = 0
         }
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        self.bag = DisposeBag()
-        self.launchImageView.image = nil
     }
 }
